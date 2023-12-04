@@ -1,6 +1,6 @@
 const resList= [
     {
-        "info": {
+        "info": {   
             "id": "375041",
             "name": "Andhra Gunpowder",
             "cloudinaryImageId": "byilgyrcfz690ryoasww",
