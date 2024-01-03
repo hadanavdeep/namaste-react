@@ -13,8 +13,6 @@ const Body = () => {
     const [searchText,setSearchText]=useState("");
     const [filteredRestaurent,setFilteredRestaurent] = useState([]);
 
-    console.log(filteredRestaurent);
-
     const RestaurantCardVeg=withVegLabel(RestaurentCard);
 
     useEffect(() => {
@@ -27,8 +25,9 @@ const Body = () => {
             );
         const json = await data.json();
         
-        setListOfRestaurents(json?.data?.cards?.[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurent(json?.data?.cards?.[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListOfRestaurents(json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurent(json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
     }
 
     const onlineStatus=useOnlineStatus();
@@ -47,6 +46,7 @@ const Body = () => {
                         type="text"
                         className="border border-solid border-black"
                         value={searchText}
+                        data-testid="searchInput"
                         onChange={(e)=>{
                             setSearchText(e.target.value);
                         }}  
@@ -67,7 +67,7 @@ const Body = () => {
                 className="px-4 py-2 bg-gray-200 rounded-lg"
                 onClick={() => {
                     const filteredList=listOfRestaurents.filter(
-                        (res) => res.info.avgRating > 4.1
+                        (res) => res.info.avgRating > 4.5
                     );
                     setFilteredRestaurent(filteredList);
                 }}>
